@@ -10,6 +10,9 @@ declare var google;
 })
 export class HomePage {
 
+  lat:number;
+  long:number;
+
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
@@ -24,6 +27,9 @@ export class HomePage {
   loadMap(){
 
     this.geolocation.getCurrentPosition().then((position) => {
+
+      this.lat = Number(position.coords.latitude.toFixed(2));
+      this.long = Number(position.coords.longitude.toFixed(2));
 
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
