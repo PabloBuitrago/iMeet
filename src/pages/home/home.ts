@@ -13,6 +13,11 @@ export class HomePage {
   lat:number;
   long:number;
 
+  data:any;
+
+  myMarker:any;
+  latLng:any;
+
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
@@ -31,10 +36,10 @@ export class HomePage {
       this.lat = Number(position.coords.latitude.toFixed(2));
       this.long = Number(position.coords.longitude.toFixed(2));
 
-      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
       let mapOptions = {
-        center: latLng,
+        center: this.latLng,
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
@@ -47,20 +52,20 @@ export class HomePage {
       console.log(err);
     });
 
+
   }
 
   addMarker(){
 
-    let marker = new google.maps.Marker({
+    this.myMarker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: this.map.getCenter()
     });
 
-    let content = "<h4>Information!</h4>";
+    let content = "<h4>You are here!</h4>";
 
-    this.addInfoWindow(marker, content);
-
+    this.addInfoWindow(this.myMarker, content);
   }
 
   addInfoWindow(marker, content){
@@ -73,5 +78,26 @@ export class HomePage {
       infoWindow.open(this.map, marker);
     });
 
+    //navigator.geolocation.watchPosition(this.watchSuccess, this.watchError, this.watchOptions);
+
   }
+
+  watchSuccess(position) {
+
+
+    let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+    console.log(this.lat);
+
+    this.lat = Number(position.coords.latitude.toFixed(2));
+
+    console.log(this.lat);
+
+    this.long = Number(position.coords.longitude.toFixed(2));
+
+    this.myMarker.setPosition(latLng);
+  }
+
+  watchError(){ }
+  watchOptions(){ }
 }
