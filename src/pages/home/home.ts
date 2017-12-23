@@ -60,27 +60,27 @@ export class HomePage {
 
   }
 
-  addMarker(){
-    // this.myMarker = new google.maps.Marker({
-    //   map: this.map,
-    //   animation: google.maps.Animation.DROP,
-    //   position: this.map.getCenter()
-    // });
-    //
-    // let content = `<h4>Estas Aquí</h4>`;
-    //
-    // this.addInfoWindow(this.myMarker, content);
-  }
-
-  addInfoWindow(marker, content){
-
-    // let infoWindow = new google.maps.InfoWindow({
-    //   content: content
-    // });
-    //
-    // google.maps.event.addListener(marker, 'click', () => {
-    //   infoWindow.open(this.map, marker);
-    // });
-
-  }
+  // addMarker(){
+  //   this.myMarker = new google.maps.Marker({
+  //     map: this.map,
+  //     animation: google.maps.Animation.DROP,
+  //     position: this.map.getCenter()
+  //   });
+  //
+  //   let content = `<h4>Estas Aquí</h4>`;
+  //
+  //   this.addInfoWindow(this.myMarker, content);
+  // }
+  //
+  // addInfoWindow(marker, content){
+  //
+  //   let infoWindow = new google.maps.InfoWindow({
+  //     content: content
+  //   });
+  //
+  //   google.maps.event.addListener(marker, 'click', () => {
+  //     infoWindow.open(this.map, marker);
+  //   });
+  //
+  // }
 }

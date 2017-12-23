@@ -4,12 +4,6 @@ import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 import 'rxjs/add/operator/filter';
 
-/*
-  Generated class for the LocationTrackerProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class LocationTracker {
 
@@ -71,14 +65,12 @@ export class LocationTracker {
 
     this.watch = this.geolocation.watchPosition(options).filter((p: any) => p.code === undefined).subscribe((position: Geoposition) => {
 
-      //console.log(position);
-
       // Run update inside of Angular's zone
       this.zone.run(() => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
 
-        this.myMarker.setPosition( { lat: this.lat, lng: this.lng });
+        this.myMarker.setPosition( { lat: this.lat, lng: this.lng } );
       });
 
     });

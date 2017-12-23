@@ -1,15 +1,18 @@
 <ion-header>
   <ion-navbar>
-    <ion-buttons end>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <!-- <ion-buttons end>
       <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon></button>
-    </ion-buttons>
-    <ion-title>
-      Map
-    </ion-title>
+    </ion-buttons> -->
+
+    <ion-title>Map</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <div #map id="map"></div>
   <!-- <div>
     <h5 class="title">Latitude: {{ lat }}</h5>
