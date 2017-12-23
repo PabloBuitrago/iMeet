@@ -21,7 +21,11 @@ export class LocationTracker {
 
   }
 
-  startTracking(map: any, google: any) {
+  loadTraking(map: any, google: any){
+    this.addMarker(map, google);
+  }
+
+  startTracking() {
     // Background Tracking
 
     this.active = true;
@@ -61,8 +65,6 @@ export class LocationTracker {
       enableHighAccuracy: true
     };
 
-    this.addMarker(map, google);
-
     this.watch = this.geolocation.watchPosition(options).filter((p: any) => p.code === undefined).subscribe((position: Geoposition) => {
 
       // Run update inside of Angular's zone
@@ -84,6 +86,8 @@ export class LocationTracker {
     this.lat = 0;
     this.lng = 0;
 
+    this.myMarker.setPosition( { lat: this.lat, lng: this.lng } );
+
     this.backgroundGeolocation.finish();
     this.watch.unsubscribe();
   }
@@ -91,9 +95,10 @@ export class LocationTracker {
   addMarker(map: any, google: any) {
     this.myMarker = new google.maps.Marker({
       map: map,
-      animation: google.maps.Animation.DROP,
-      position: map.getCenter()
+      animation: google.maps.Animation.DROP
     });
+
+    this.myMarker.setPosition( { lat: this.lat, lng: this.lng } );
 
     let content = `<h4>Estas Aquí</h4>`;
 

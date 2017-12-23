@@ -26,7 +26,7 @@ export class HomePage {
   }
 
   start(){
-    this.locationTracker.startTracking(this.map, google);
+    this.locationTracker.startTracking();
   }
 
   stop(){
@@ -35,6 +35,7 @@ export class HomePage {
 
   ionViewDidLoad(){
     this.loadMap();
+
   }
 
   loadMap(){
@@ -52,6 +53,7 @@ export class HomePage {
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
       //this.addMarker();
+      this.locationTracker.loadTraking(this.map, google);
 
     }, (err) => {
       console.log(err);
