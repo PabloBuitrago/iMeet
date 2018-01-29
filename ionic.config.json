@@ -1,6 +1,6 @@
 {
   "name": "iMeet",
-  "app_id": "33367d56",
+  "app_id": "24caae8f",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
